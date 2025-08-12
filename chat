@@ -1,0 +1,123 @@
+Fichiers créés / modifiés :
+src/models/User.js
+→ Modèle utilisateur avec mot de passe sécurisé.
+
+src/models/Task.js
+→ Modèle tâche avec champs titre, priorité, statut, etc.
+
+src/routes/tasks.js
+→ Routes Express pour gérer les tâches (CRUD, pagination, filtres).
+
+src/server.js (ou app.js selon ton projet)
+→ Point d’entrée de l’application où tu connectes MongoDB et les routes.
+
+Avec ça tu sais exactement où reprendre pour continuer ton projet.
+Tu veux que je t’aide à planifier la suite ?
+
+
+Bien sûr ! Voici un résumé clair et structuré de tout ce que nous avons fait jusqu’à maintenant pour ton projet de gestion des tâches en Node.js :
+
+─────────────────────────────
+🎯 Objectif du projet :
+Créer une application de gestion des tâches pour une équipe avec Node.js, Express, MongoDB, JWT.
+
+─────────────────────────────
+✅ Partie 1 : Structure de projet
+
+📁 Création des dossiers de base :
+
+src/models → pour les modèles (User, Task)
+
+src/routes → pour les routes Express
+
+src/middlewares → pour les middlewares (comme protect)
+
+server.js → point d’entrée de l’app
+
+─────────────────────────────
+✅ Partie 2 : Modèle User
+
+Fichier : src/models/User.js
+
+Champs : name, email, password, role (admin/member)
+
+Mot de passe sécurisé avec bcrypt (hashage)
+
+Méthode comparePassword pour la connexion
+
+Middleware Mongoose (pre save) pour chiffrer le mot de passe
+
+─────────────────────────────
+✅ Partie 3 : Modèle Task
+
+Fichier : src/models/Task.js
+
+Champs : title, description, priority, status, assignedTo, createdBy
+
+Relations entre les tâches et les utilisateurs avec ObjectId
+
+Timestamps activés (createdAt, updatedAt)
+
+─────────────────────────────
+✅ Partie 4 : Routes pour les tâches
+
+Fichier : src/routes/tasks.js
+
+Routes CRUD (Create, Read, Update, Delete)
+
+Fonctionnalités :
+
+GET / → liste paginée + filtres (priority, status)
+
+POST / → créer une tâche
+
+PUT /:id → modifier une tâche
+
+DELETE /:id → supprimer une tâche
+
+Utilisation de populate() pour voir les infos de l’utilisateur assigné/créateur
+
+─────────────────────────────
+✅ Partie 5 : Serveur Express
+
+Fichier : server.js
+
+Configuration :
+
+express.json(), cors, dotenv, morgan
+
+Connexion MongoDB avec mongoose (via .env)
+
+authRoutes connectées à /api/auth
+
+tasksRouter connecté à /api/tasks ✅ (fait récemment)
+
+Route de test protégée (/api/test/protected)
+
+Middleware de gestion des erreurs
+
+Le serveur écoute sur le port 5000
+
+─────────────────────────────
+🧪 Étapes suivantes possibles :
+
+Authentification JWT (connexion, inscription, token)
+
+Création du modèle de route d’authentification (auth.js)
+
+Middleware protect pour sécuriser les routes (déjà partiellement en place)
+
+Gestion des rôles (admin vs membre)
+
+Interface front ou test avec Postman
+
+─────────────────────────────
+📌 Tu es actuellement prêt à :
+
+✅ Créer des utilisateurs
+✅ Créer/lister/modifier/supprimer des tâches
+✅ Lancer ton serveur Express
+✅ Tester les routes via Postman
+
+Tu veux qu’on attaque l’authentification JWT maintenant (connexion, inscription) ou qu’on teste les routes avec Postman ?
+
