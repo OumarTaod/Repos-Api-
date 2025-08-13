@@ -30,12 +30,12 @@ exports.register = async (req, res) => {
     const user = await User.create({ name, email, password, role });
 
     // Générer token
-    const token = generateToken(user);
+    // const token = generateToken(user);
 
     // Répondre
     res.status(201).json({
       message: 'Utilisateur créé avec succès',
-      token,
+      // token,
       user: {
         id: user._id,
         name: user.name,
