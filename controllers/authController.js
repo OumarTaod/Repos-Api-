@@ -13,7 +13,7 @@ const generateToken = (user) => {
 // ✅ Inscription
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password,role  } = req.body;
 
     // Vérifier champs
     if (!name || !email || !password) {
@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
     }
 
     // Créer utilisateur
-    const user = await User.create({ name, email, password });
+    const user = await User.create({ name, email, password, role });
 
     // Générer token
     const token = generateToken(user);

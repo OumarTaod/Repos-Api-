@@ -22,5 +22,16 @@ const protect = async (req, res, next) => {
     return res.status(401).json({ message: 'Token invalide ou expiré' });
   }
 };
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next(); // continuer si admin
+  } else {
+    res.status(403).json({ message: 'Accès refusé : Admin uniquement' });
+  }
+};
 
-module.exports = { protect };
+module.exports = {
+  protect,
+  isAdmin
+};
+

@@ -4,12 +4,12 @@ const dotenv = require('dotenv');           // Pour lire les variables d'environ
 const cors = require('cors');               // Permet d'autoriser les requêtes d'autres domaines (CORS)
 const morgan = require('morgan');           // Affiche les requêtes dans la console (utile en dev)
 const tasksRouter = require('./routes/tasks'); // chemin vers le fichier tasks.js
-
-// On charge les variables du fichier .env
+const userRoutes = require('./routes/users');
+const teamRoutes = require('./routes/teams');
+const taskRoutes = require('./routes/tasks');
+const allteams = require('./routes/teams');
 dotenv.config();
-
-// On importe les routes d'authentification
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');// On importe les routes d'authentification
 
 // On importe le middleware pour protéger certaines routes
 const { protect } = require('./middlewares/auth');
@@ -19,10 +19,16 @@ const app = express();
 
 // Middleware : permet à l'application de comprendre les requêtes JSON
 app.use(cors());                  // Autorise toutes les origines (utile en développement)
-app.use(express.json());         // Pour comprendre les données envoyées en JSON
+app.use(express.json());
 
-// On connecte les routes d'authentification
+
+// On connecte les routes 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/teams', teamRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/allteams', allteams);
+
 
 // Si on est en développement, on active morgan pour voir les requêtes HTTP dans la console
 if (process.env.NODE_ENV !== 'production') {
@@ -43,10 +49,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Routes des tâches
 app.use('/api/tasks', tasksRouter);
 
-// Route protégée de test : on ne peut y accéder que si on est connecté avec un token JWT
+// Route temporaire
 app.get('/api/test/protected', (req, res) => {
   res.json({
-    message: 'Accès autorisé',
+    message: 'Accès autorisé, route non protégée',
     user: {
       id: req.user._id,
       name: req.user.name,

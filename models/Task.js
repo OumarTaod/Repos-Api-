@@ -18,7 +18,7 @@ const taskSchema = new mongoose.Schema({
   },
   status: {  // Statut : en cours ou terminée
     type: String,
-    enum: ['En cours..', 'completé✅'],
+    enum: ['in progress', 'completed'],
     default: 'in progress'
   },
   assignedTo: {  // Référence au membre de l’équipe (un User)
@@ -31,8 +31,8 @@ const taskSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   }
-}, {
-  timestamps: true // Dates de création et modification automatiques
+},
+ {timestamps: true // Dates de création et modification automatiques
 });
 
 // Export du modèle Task
