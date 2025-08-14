@@ -12,12 +12,13 @@ dotenv.config();
 const authRoutes = require('./routes/auth');// On importe les routes d'authentification
 // On importe le middleware pour protéger certaines routes
 const { protect } = require('./middlewares/auth');
-
+const helmet = require('helmet') // Pour la validation des données (optionnel mais recommandé)
 // On crée l'application Express
 const app = express();
 
 // Middleware : permet à l'application de comprendre les requêtes JSON
-app.use(cors());                  // Autorise toutes les origines (utile en développement)
+app.use(cors());
+app.use(helmet()),                  // Autorise toutes les origines (utile en développement)
 app.use(express.json());
 
 
