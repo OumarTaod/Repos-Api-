@@ -198,7 +198,7 @@ Créer des tâches, les assigner
 Filtrer, modifier, supprimer
 
 Tester les restrictions d’accès
-priority : filtre par priorité (ex. ?priority=haute)
+priority : filtre par priorité (ex. ?priority=medium)
 
 status : filtre par statut (ex. ?status=en_cours)
 

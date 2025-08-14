@@ -10,7 +10,6 @@ const taskRoutes = require('./routes/tasks');
 const allteams = require('./routes/teams');
 dotenv.config();
 const authRoutes = require('./routes/auth');// On importe les routes d'authentification
-
 // On importe le middleware pour protéger certaines routes
 const { protect } = require('./middlewares/auth');
 
@@ -28,6 +27,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/allteams', allteams);
+app.use('/api/users', userRoutes);
+
 
 
 // Si on est en développement, on active morgan pour voir les requêtes HTTP dans la console

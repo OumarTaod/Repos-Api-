@@ -24,7 +24,7 @@ const protect = async (req, res, next) => {
 };
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
-    next(); // continuer si admin
+    next(); // continuer si c'est un admin
   } else {
     res.status(403).json({ message: 'Accès refusé : Admin uniquement' });
   }
