@@ -5,7 +5,7 @@ const { protect, isAdmin } = require('../middlewares/auth');
 const { getAllUsers, deleteUser } = require('../controllers/userController');
 
 // 🔐 Admin seulement : voir tous les utilisateurs
-router.get('/', protect, isAdmin, getAllUsers);
+router.get('/', /*protect,*/ isAdmin, getAllUsers);
 
 // 🔐 Admin seulement : supprimer un utilisateur par ID
 router.delete('/:id', protect, isAdmin, deleteUser);

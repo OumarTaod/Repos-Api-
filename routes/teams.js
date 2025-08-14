@@ -16,5 +16,5 @@ const { protect, isAdmin } = require('../middlewares/auth');
 router.post('/', protect, isAdmin,validate(teamSchema), createTeam); // Créer une nouvelle équipe
 router.put('/:id/addMember', protect, isAdmin,validate(teamSchema), addMember); // Ajouter un membre à une équipe
 router.get('/:id', getTeamById); // Voir les détails d’une équipe
-router.get('/', protect, isAdmin , getAllTeams); // accessible à tout utilisateur connecté
+router.get('/', /*protect,*/ isAdmin , getAllTeams); // accessible à tout utilisateur connecté
 module.exports = router;

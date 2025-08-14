@@ -12,8 +12,8 @@ const {
 } = require('../controllers/tasksController');
 
 
-router.get('/', protect, getTasks);
-router.post('/', protect, validate(taskSchema), createTask);
+router.get('/', /*protect,*/ getTasks);
+router.post('/', /*protect,*/ validate(taskSchema), createTask);
 router.put('/:id', protect, isAdmin,validate(taskSchema), updateTask);
 router.delete('/:id', protect, isAdmin, deleteTask);
 
